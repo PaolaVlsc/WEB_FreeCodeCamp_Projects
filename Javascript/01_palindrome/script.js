@@ -10,7 +10,15 @@
 // We'll also pass strings with special symbols, such as 2A3*3a2, 2A3 3a2, and 2_A3*3#A2.
 
 function palindrome(str) {
-  return true;
+  // Convert the string to lowercase and remove any non-alphanumeric characters (except for spaces).
+  const lowerCaseString = str.toLowerCase();
+  const alphanumericOnly = lowerCaseString.replace(/[^a-z0-9]/g, "");
+  //   const alphanumericOnly = lowerCaseString.replace(/[\W_]/g, '');
+  const reversedString = alphanumericOnly.split("").reverse().join("");
+
+  // check if it is palindrome
+
+  return alphanumericOnly === reversedString;
 }
 
-palindrome("eye");
+console.log(palindrome("eye"));
